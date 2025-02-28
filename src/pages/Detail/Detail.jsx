@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { motion , useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from '../../components/Button/Button';
-=======
-import { useState } from "react";
-import { StarIcon } from "@heroicons/react/20/solid";
-import { Radio, RadioGroup } from "@headlessui/react";
-import { motion , useInView } from "framer-motion";
-import { useRef } from "react";
->>>>>>> 49bdc2043b20a799f243360ec7da544f4b9f36fc
 
 const product = {
   name: "Basic Tee 6-Pack",
