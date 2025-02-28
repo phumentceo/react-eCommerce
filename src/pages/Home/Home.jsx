@@ -3,7 +3,6 @@ import Slider from '../../components/Slide/Slider'
 import { motion , useInView } from "framer-motion";
 import { useRef } from "react";
 import "./style.css"
-import Footer from '../../components/Footer/Footer';
 
 
 const Home = () => {
@@ -70,7 +69,7 @@ const Home = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+    </div>
     
 
 
