@@ -272,6 +272,35 @@ export default function Detail() {
                   Add to bag
                 </button>
               </form>
+
+              <div className="py-10">
+              <h3 className="sr-only">Description</h3>
+              <div className="space-y-6">
+                <p className="text-base text-gray-900">{product.description}</p>
+              </div>
+
+              <div className="mt-10">
+                <h3 className="text-sm font-medium text-gray-900">
+                  Highlights
+                </h3>
+                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+                  {product.highlights.map((highlight) => (
+                    <li key={highlight} className="text-gray-400">
+                      <span className="text-gray-600">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-10">
+                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                <div className="mt-4 space-y-6">
+                  <p className="text-sm text-gray-600">{product.details}</p>
+                </div>
+              </div>
+            </div>
+
+
             </div>
           </div>
 
@@ -347,6 +376,7 @@ export default function Detail() {
                 </div>
                 <Button type="submit" className="mt-4 bg-indigo-600 text-white hover:bg-indigo-700">Submit Review</Button>
               </form>
+              
             </div>
           )}
         </div>
@@ -359,7 +389,7 @@ export default function Detail() {
       <div className="py-10 max-w-full">
         <h2 className="text-3xl font-semibold mb-5 underline">products</h2>
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-x-6 gap-y-10">
-          {[1,1,1,1,1,1,1,1,1,1,1,1].map((product, index) => (
+          {[...Array(12)].map((product, index) => (
             <motion.div
               key={index}
               className="group  bg-white p-2 rounded-lg shadow-md overflow-hidden cursor-pointer"
