@@ -1,66 +1,74 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { motion , useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from '../../components/Button/Button';
+=======
+import { useState } from "react";
+import { StarIcon } from "@heroicons/react/20/solid";
+import { Radio, RadioGroup } from "@headlessui/react";
+import { motion , useInView } from "framer-motion";
+import { useRef } from "react";
+>>>>>>> 49bdc2043b20a799f243360ec7da544f4b9f36fc
 
 const product = {
-  name: 'Basic Tee 6-Pack',
-  price: '$192',
-  href: '#',
+  name: "Basic Tee 6-Pack",
+  price: "$192",
+  href: "#",
   breadcrumbs: [
-    { id: 1, name: 'Men', href: '#' },
-    { id: 2, name: 'Clothing', href: '#' },
+    { id: 1, name: "Men", href: "#" },
+    { id: 2, name: "Clothing", href: "#" },
   ],
   images: [
     {
-      src: 'https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
-      alt: 'Two each of gray, white, and black shirts laying flat.',
+      src: "https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
+      alt: "Two each of gray, white, and black shirts laying flat.",
     },
     {
-      src: 'https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
-      alt: 'Model wearing plain black basic tee.',
+      src: "https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
+      alt: "Model wearing plain black basic tee.",
     },
     {
-      src: 'https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
-      alt: 'Model wearing plain gray basic tee.',
+      src: "https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
+      alt: "Model wearing plain gray basic tee.",
     },
     {
-      src: 'https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
-      alt: 'Model wearing plain white basic tee.',
+      src: "https://tailwindui.com/plus-assets/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
+      alt: "Model wearing plain white basic tee.",
     },
   ],
   colors: [
-    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+    { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
+    { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
+    { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
   ],
   sizes: [
-    { name: 'XXS', inStock: false },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: '2XL', inStock: true },
-    { name: '3XL', inStock: true },
+    { name: "XXS", inStock: false },
+    { name: "XS", inStock: true },
+    { name: "S", inStock: true },
+    { name: "M", inStock: true },
+    { name: "L", inStock: true },
+    { name: "XL", inStock: true },
+    { name: "2XL", inStock: true },
+    { name: "3XL", inStock: true },
   ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
   highlights: [
-    'Hand cut and sewn locally',
-    'Dyed with our proprietary colors',
-    'Pre-washed & pre-shrunk',
-    'Ultra-soft 100% cotton',
+    "Hand cut and sewn locally",
+    "Dyed with our proprietary colors",
+    "Pre-washed & pre-shrunk",
+    "Ultra-soft 100% cotton",
   ],
   details:
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-}
-const reviews = { href: '#', average: 4, totalCount: 117 }
+};
+const reviews = { href: "#", average: 4, totalCount: 117 };
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Detail() {
@@ -90,6 +98,49 @@ export default function Detail() {
       }
   };
 
+  const [customerRatings, setCustomerRatings] = useState([
+    {
+      id: 1,
+      name: 'John Doe',
+      rating: 5,
+      comment: 'Excellent product! Highly recommended.',
+      date: '2023-10-01',
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      rating: 4,
+      comment: 'Good quality, but delivery was a bit slow.',
+      date: '2023-10-05',
+    },
+    {
+      id: 3,
+      name: 'Alice Johnson',
+      rating: 3,
+      comment: 'Average product. Could be better.',
+      date: '2023-10-10',
+    },
+  ]);
+
+  const handleSubmitRating = () => {
+    if (newRating > 0 && newComment.trim() !== '') {
+      const newReview = {
+        id: customerRatings.length + 1,
+        name: 'Guest User',
+        rating: newRating,
+        comment: newComment,
+        date: new Date().toISOString().split('T')[0],
+      };
+
+      setCustomerRatings([...customerRatings, newReview]);
+      setNewRating(0);
+      setNewComment('');
+    } else {
+      alert('Please provide a rating and comment!');
+    }
+  };
+
+ 
   return (
 
     <div className="bg-white my-[30px]">
