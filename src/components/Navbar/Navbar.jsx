@@ -14,6 +14,7 @@ import {
   TabPanels,
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import CartSidebar from '../Sidebar/CartSidebar'
 
 const navigation = {
   categories: [
@@ -141,17 +142,24 @@ const navigation = {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false);
+
 
   return (
     <div className="bg-white relative">
+
+      {/* CartSidebar */}
+      <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+
+
       {/* Mobile phone device */}
-      <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
+      <Dialog open={open} onClose={setOpen} className="relative z-30 lg:hidden">
         <DialogBackdrop
           transition
           className="fixed inset-0 bg-black/25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
         />
 
-        <div className="fixed inset-0 z-40 flex">
+        <div className="fixed inset-0 z-30 flex">
           <DialogPanel
             transition
             className="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:-translate-x-full"
@@ -268,7 +276,7 @@ export default function Navbar() {
       {/* Mobile phone device */}
 
       {/* Pc devive */}
-      <header className=" sticky top-0 left-0 w-full bg-white z-50 shadow-md">
+      <header className=" sticky top-0 left-0 w-full bg-white z-30 shadow-md">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Get free delivery on orders over $100
         </p>
@@ -389,6 +397,7 @@ export default function Navbar() {
                   </a>
                 </div>
 
+
                 <div className="hidden lg:ml-8 lg:flex">
                   <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
                     <img
@@ -411,14 +420,16 @@ export default function Navbar() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <a href="javacript:void()" onClick={() => setCartOpen(true)} className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                     <span className="sr-only">items in cart, view bag</span>
+                    
                   </a>
+                  
                 </div>
               </div>
             </div>
